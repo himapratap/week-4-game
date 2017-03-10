@@ -2,7 +2,7 @@ var i = 10;
 var characterArr = ['c1', 'c2', 'c3', 'c4'];
 var myCharacter;
 var defender;
-
+var myhp = 0;
 
 $(document).ready(function() {
 
@@ -34,9 +34,7 @@ $(document).ready(function() {
 
     }
 
-    /*   $(".enemy").live("click", function() {
 
-       });*/
 
     $(document).on('click', '.enemy', function() {
 
@@ -49,10 +47,23 @@ $(document).ready(function() {
     });
 
     function setDefender() {
-        $(".defender").html(defender);
+        $(".defender").append(defender);
 
 
     }
+
+
+    $(document).on('click', '.attack', function() {
+        console.log($("#" + myCharacter + " #hp"));
+        myhp = parseInt($("#" + myCharacter).attr("hp"));
+        console.log(" prev hp");
+        console.log(myhp);
+        myhp = myhp - 10;
+        $("#" + myCharacter).attr("hp", myhp);
+        $("#" + myCharacter + " #hp").text(myhp);
+
+
+    });
 
 
 });
