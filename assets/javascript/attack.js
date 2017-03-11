@@ -15,29 +15,20 @@ $(document).ready(function() {
         me = $(this);
         myName = me.attr("value");
         console.log("You have chosen ", myName);
-        removeAndSetEnemies();
 
-    });
-
-
-
-    function removeAndSetEnemies() {
-
-        for (var i = 0; i < characterArr.length; i++) {
-            var char = characterArr[i];
-            if (char != myName) {
-                var enemy = $("#" + char);
-                enemy.remove();
+        $(".character").each(function(index) {
+            var otherCharacters = $(this).attr("value");
+            console.log(otherCharacters);
+            if (otherCharacters !== myName) {
+                var enemy = $(this).clone();
+                $(this).hide();
                 enemy.removeClass("character active");
-
                 enemy.addClass("enemy")
                 $(".enemies").append(enemy);
-
             }
-        }
+        });
 
-
-    }
+    });
 
 
 
@@ -66,16 +57,14 @@ $(document).ready(function() {
 
     $(document).on('click', '.attack', function() {
         attackCount++;
+        console.log($("#c2 #hp").html());
 
         myHeartPoint = myHeartPoint - enemyAttackPoint;
         chargedAttackPoint = (myAttackPoint * attackCount);
         enemyHeartPoint = enemyHeartPoint - chargedAttackPoint;
-
-
-
         me.find("#hp").text(myHeartPoint);
         defender.find("#hp").text(enemyHeartPoint);
-        comment = "You attacked for " + chargedAttackPoint + " and enemey attacked for " + enemyAttackPoint;
+        comment = "You attacked for " + chargedAttackPoint + " and enemy attacked for " + enemyAttackPoint;
         console.log(comment);
 
         $("#comment").text(comment);
@@ -83,11 +72,43 @@ $(document).ready(function() {
         ifWon();
     });
 
-    function ifWon(){
-        if (myHeartPoint < 0 && enemyHeartPoint > 0){
+    function ifWon() {
+        if (myHeartPoint < 0 && enemyHeartPoint > 0) {
             alert("you lose");
             restart();
+        } else if (enemyHeartPoint < 0) {
+            if ($(".enemy").length == 0) {
+                alert("yaaaay u won !!");
+                restart();
+
+            } else {
+                alert("enemy is dead with " + enemyHeartPoint + " select new defender..");
+
+            }
+            comment = "";
+            $("#comment").text(comment);
+            defender.fadeOut();
+
+
         }
     }
 
+    function restart() {
+        location.reload();
+        /*    $(".character").each(function(index) {
+                $(this).show();
+
+            });
+
+            $(".enemy").each(function(index) {
+                $(this).remove();
+
+            });
+
+
+             $(".defender").each(function(index) {
+                $(this).remove();
+
+            });*/
+    }
 });
