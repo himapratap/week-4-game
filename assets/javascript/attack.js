@@ -74,15 +74,15 @@ $(document).ready(function() {
 
     function ifWon() {
         if (myHeartPoint < 0 && enemyHeartPoint > 0) {
-            alert("you lose");
+            alert("You Lose ! GAME OVER !!!!!");
             restart();
         } else if (enemyHeartPoint < 0) {
             if ($(".enemy").length == 0) {
-                alert("yaaaay u won !!");
+                alert("YAAAY YOU WON !!");
                 restart();
 
             } else {
-                alert("enemy is dead with " + enemyHeartPoint + " select new defender..");
+                alert("Enemy is dead with " + enemyHeartPoint + " heart points. Select new defender..");
 
             }
             comment = "";

@@ -4,8 +4,27 @@
  }
  
  .container {
-/*      background-image: url(../images/background.jpg);
+     /*      background-image: url(../images/background.jpg);
 background-repeat: no-repeat;
 background-position: center center;
 background-attachment: fixed; */
+ }
+ /*  .panel-title {
+    background-image: url(../images/banner.jpg);
+    background-repeat: no-repeat;
+    background-position: center center;
+height:160px;
+background-size: cover;
+}
+*/
+ 
+ h1 {
+     font-family: 'Diplomata SC', cursive;
+     font-family: 'Rubik Mono One', sans-serif;
+ }
+ 
+ h4, .attack,.name, #hp , #comment{
+     font-family: 'Diplomata SC', cursive;
+     font-family: 'Rubik Mono One', sans-serif;
+     font-family: 'VT323', monospace;
  }
